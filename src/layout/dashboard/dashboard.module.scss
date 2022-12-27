@@ -1,0 +1,15 @@
+@use "../../assets/styles/abstracts/functions" as *;
+@use "../../assets/styles/abstracts/mixin" as *;
+
+.dashboard {
+  display: grid;
+  gap: rem(16px);
+  grid-template-columns: 1fr;
+  width: 92vw;
+
+  @include mq("lg") {
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 240px);
+    width: auto;
+  }
+}

@@ -1,0 +1,80 @@
+@use "src/assets/styles//abstracts/variables" as *;
+@use "src/assets/styles//abstracts/functions" as *;
+@use "src/assets/styles/abstracts/mixin" as *;
+
+.userCard {
+  background-color: $darkBlue;
+  border-radius: rem(20px);
+  user-select: none;
+
+  @include mq("lg") {
+    grid-row: 1 / 3;
+  }
+}
+
+.user {
+  @include flex(start, center, no-wrap, 16px, 16px);
+  background-color: $blue;
+  border-radius: rem(20px);
+  padding: rem(24px);
+
+  @include mq("lg") {
+    flex-direction: column;
+    align-items: start;
+    height: 300px;
+  }
+}
+
+.name {
+  color: #fff;
+  @include text-sizes("xl");
+
+  @include mq("lg") {
+    @include text-sizes("5xl");
+    display: flex;
+    flex-direction: column;
+    gap: rem(10px);
+  }
+}
+
+.userImage {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  flex-shrink: 0;
+
+  @include mq("lg") {
+    margin-block-end: 35px;
+  }
+}
+
+.userImage img {
+  max-width: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.buttonsGroup {
+  padding: rem(24px);
+  @include flex(space-around);
+
+  @include mq("lg") {
+    flex-direction: column;
+    align-items: start;
+    gap: 20px;
+  }
+}
+
+.buttonsGroup button {
+  background-color: transparent;
+  border: none;
+  font-weight: 500;
+  @include Rubik();
+  @include text-sizes("base");
+
+  &:hover {
+    cursor: pointer;
+    color: #fff;
+  }
+}

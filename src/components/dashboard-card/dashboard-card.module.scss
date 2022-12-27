@@ -1,0 +1,88 @@
+@use "../../assets/styles//abstracts/variables" as *;
+@use "../../assets/styles//abstracts/functions" as *;
+@use "../../assets/styles/abstracts/mixin" as *;
+
+$cardColors: (
+  work: $lightOrange,
+  play: $softBlue,
+  study: $lightRed,
+  exercise: $limeGreen,
+  social: $violet,
+  self-care: $softOrange,
+);
+
+@each $style, $value in $cardColors {
+  .#{$style} {
+    background-color: $value;
+    background-image: url("../../assets/img/icon-#{$style}.svg");
+    background-position: 94% -8%;
+    background-repeat: no-repeat;
+  }
+}
+
+.wrapper {
+  border-radius: rem(20px);
+  padding-block-start: rem(40px);
+}
+
+.card {
+  background-color: $darkBlue;
+  border-radius: rem(20px);
+  padding: rem(20px) rem(20px) rem(30px) rem(20px);
+  user-select: none;
+  min-width: 200px;
+
+  &:hover {
+    cursor: pointer;
+    background-color: lighten($darkBlue, 12%);
+  }
+
+  @include mq("lg") {
+    height: calc(100% - rem(48px));
+  }
+}
+
+.header {
+  @include flex();
+}
+
+.content {
+  @include flex();
+
+  @include mq("lg") {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: rem(10px);
+  }
+}
+
+.hour {
+  color: #fff;
+  @include text-sizes("2xl");
+
+  @include mq("lg") {
+    @include text-sizes("6xl");
+  }
+}
+
+.last {
+  color: $paleBlue;
+  @include text-sizes("lg");
+}
+
+.button {
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  padding: 4px;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &:hover path {
+    fill: #fff !important;
+  }
+}

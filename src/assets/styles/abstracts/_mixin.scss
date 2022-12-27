@@ -1,0 +1,75 @@
+@use "./variables" as *;
+
+$breakpoints: (
+  "xs": $mobile,
+  "lg": $desktop,
+);
+
+@mixin mq($width, $type: min) {
+  @if map_has_key($breakpoints, $width) {
+    $width: map_get($breakpoints, $width);
+
+    @if $type == max {
+      $width: $width - 1px;
+    }
+
+    @media only screen and (#{$type}-width: $width) {
+      @content;
+    }
+  }
+}
+
+@mixin Rubik {
+  font-family: "Rubik", sans-serif;
+}
+
+@mixin text-sizes($sizes) {
+  @if map-has-key($font-sizes, $sizes) {
+    $font-size: map-get($font-sizes, $sizes);
+
+    font-size: nth($font-size, 1);
+    line-height: nth($font-size, 2);
+  }
+}
+
+@mixin flex(
+  $justify: space-between,
+  $items: center,
+  $wrap: wrap,
+  $gapCol: 0,
+  $gapRow: 0
+) {
+  display: flex;
+  flex-wrap: $wrap;
+  justify-content: $justify;
+  align-items: $items;
+  column-gap: $gapCol;
+  row-gap: $gapRow;
+}
+
+@mixin customScrollBar($color) {
+  &::-webkit-scrollbar {
+    width: 6px;
+    border-radius: 20px;
+    background-color: $color;
+    background-clip: padding-box;
+    border: 1px solid transparent;
+  }
+  &::-webkit-scrollbar-thumb {
+    width: 15px;
+    border-radius: 20px;
+    background-clip: padding-box;
+    border: 1px solid transparent;
+  }
+  &::-webkit-scrollbar-thumb {
+    box-shadow: inset 0 0 0 5px;
+    transition: all 0.3s ease;
+    color: rgba(0, 0, 0, 0.1) !important;
+  }
+  &:hover::-webkit-scrollbar-thumb {
+    color: rgba(0, 0, 0, 0.3) !important;
+  }
+  &::-webkit-scrollbar:horizontal {
+    height: 6px !important;
+  }
+}

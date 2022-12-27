@@ -1,0 +1,8 @@
+@use "../abstracts//variables" as *;
+@use "../abstracts/mixin" as *;
+
+body {
+  background: $veryDarkBlue;
+  @include Rubik;
+  @include customScrollBar($paleBlue);
+}
